@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { ScribbleButton } from "~/components/scribble-button";
 import { api } from "~/trpc/react";
 
 export function Chores() {
@@ -54,7 +55,7 @@ export function Chores() {
         Add Chore
       </button>
       {query.data.map((item) => (
-        <button
+        <ScribbleButton
           key={item.id}
           onClick={() => {
             createTask.mutate(item);
@@ -62,7 +63,7 @@ export function Chores() {
         >
           {item.name}
           {item.pointValue}
-        </button>
+        </ScribbleButton>
       ))}
     </div>
   );

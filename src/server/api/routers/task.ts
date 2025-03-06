@@ -14,12 +14,7 @@ export const taskRouter = createTRPCRouter({
       .from(tasks)
       .orderBy(desc(tasks.createdAt))
       .leftJoin(users, eq(tasks.createdById, users.id))
-      .where(
-        and(
-          eq(tasks.createdById, ctx.session.user.id),
-          gte(tasks.createdAt, startMonth),
-        ),
-      );
+      .where(and(gte(tasks.createdAt, startMonth)));
 
     return myTasks;
   }),
