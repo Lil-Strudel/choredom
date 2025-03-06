@@ -1,0 +1,1 @@
+ALTER TABLE "choredom_task" ALTER COLUMN "name" SET NOT NULL;
