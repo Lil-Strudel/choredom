@@ -17,27 +17,32 @@ export default function App({}: AppProps) {
 
   return (
     <main className="mx-auto flex h-full w-full max-w-2xl flex-col items-center gap-4 p-4">
-      <div className="flex gap-4">
-        <ScribbleButton onClick={() => setPage("points")}>
+      <div className="flex gap-2 sm:gap-4">
+        <ScribbleButton
+          onClick={() => setPage("points")}
+          className="w-fit text-sm"
+        >
           My Points
         </ScribbleButton>
-        <ScribbleButton onClick={() => setPage("history")}>
+        <ScribbleButton onClick={() => setPage("history")} className="text-sm">
           History
         </ScribbleButton>
-        <ScribbleButton onClick={() => setPage("leaderboard")}>
+        <ScribbleButton
+          onClick={() => setPage("leaderboard")}
+          className="text-sm"
+        >
           Leaderboard
         </ScribbleButton>
-        <Link href="/api/auth/signout">
-          <ScribbleButton>Signout</ScribbleButton>
+        <Link href="/api/auth/signout" className="h-full">
+          <ScribbleButton className="h-full text-sm">Signout </ScribbleButton>
         </Link>
       </div>
-      <span className="text-3xl">Welcome to</span>
-      <span className="text-8xl">Choredom!</span>
+      <span className="text-2xl sm:text-3xl">Welcome to</span>
+      <span className="text-6xl/3 sm:text-8xl">Choredom!</span>
+      <div className="mt-2" />
 
       {page === "points" && <Points />}
-
       {page === "history" && <History />}
-
       {page === "leaderboard" && <Leaderboard />}
     </main>
   );

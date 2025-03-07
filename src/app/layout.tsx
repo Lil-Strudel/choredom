@@ -17,7 +17,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className="font-indie font-bold">
-      <body className="max-w-screen h-screen max-h-screen w-screen text-2xl">
+      <body className="max-w-screen h-screen max-h-screen w-screen overflow-hidden text-2xl">
         <TRPCReactProvider>
           <HydrateClient>{children}</HydrateClient>
         </TRPCReactProvider>

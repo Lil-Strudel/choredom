@@ -17,11 +17,13 @@ export function Points() {
   const pointTotal = query.data.reduce((acc, cur) => acc + cur.pointValue, 0);
 
   return (
-    <div className="flex w-full flex-col items-center gap-4">
+    <div className="flex w-full flex-grow flex-col items-center">
       <span className="text-lg">you are at</span>
-      <span className="text-6xl/3">{pointTotal}</span>
+      <span className="text-6xl">{pointTotal}</span>
       <span className="text-lg">points</span>
-      <Chores />
+      <div className="relative w-full flex-grow overflow-hidden">
+        <Chores />
+      </div>
     </div>
   );
 }

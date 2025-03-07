@@ -35,7 +35,7 @@ export const ScribbleButton = ({ children, ...props }: ScribbleButtonProps) => {
       }}
       whileTap={{
         scale: 0.85,
-        rotate: [-6],
+        rotate: [initialRotate - 5],
         boxShadow: "1px 2px 2px -1px rgba(0,0,0,0.3)",
         transition: {
           duration: 0.3,
