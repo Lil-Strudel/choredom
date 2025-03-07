@@ -21,7 +21,7 @@ export function Points() {
       <span className="text-lg">you are at</span>
       <span className="text-6xl">{pointTotal}</span>
       <span className="text-lg">points</span>
-      <div className="relative w-full flex-grow overflow-hidden">
+      <div className="relative w-full flex-grow">
         <Chores />
       </div>
     </div>

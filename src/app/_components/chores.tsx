@@ -92,7 +92,7 @@ export function Chores() {
           Save
         </ScribbleButton>
       </Dialog>
-      <div className="absolute left-0 top-0 flex h-full w-full max-w-md flex-grow flex-col gap-4 overflow-scroll py-4">
+      <div className="absolute left-0 top-0 flex h-full w-full max-w-md flex-grow flex-col gap-4 overflow-scroll p-4">
         <Dialog
           isOpen={open}
           onClose={handleClose}

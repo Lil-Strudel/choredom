@@ -16,7 +16,7 @@ export const ScribbleButton = ({ children, ...props }: ScribbleButtonProps) => {
       suppressHydrationWarning
       {...props}
       className={twMerge(
-        "mx-2 border-[3px] border-[#41403E] bg-white p-2 [border-bottom-left-radius:15px_255px] [border-bottom-right-radius:225px_15px] [border-top-left-radius:255px_15px] [border-top-right-radius:15px_225px]",
+        "border-[3px] border-[#41403E] bg-white p-2 [border-bottom-left-radius:15px_255px] [border-bottom-right-radius:225px_15px] [border-top-left-radius:255px_15px] [border-top-right-radius:15px_225px]",
         props.className,
       )}
       initial={{
