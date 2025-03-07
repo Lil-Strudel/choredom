@@ -95,32 +95,7 @@ export function Chores() {
           Save
         </ScribbleButton>
       </Dialog>
-      <div className="absolute left-0 top-0 flex h-full w-full max-w-md flex-grow flex-col gap-4 overflow-scroll p-4">
-        <Dialog
-          isOpen={open}
-          onClose={handleClose}
-          title={formMode === "new" ? "Add New Chore" : "One Time Chore"}
-          maxWidth="max-w-sm"
-        >
-          <ScribbleInput
-            label="Name"
-            value={form.name}
-            onChange={(e) =>
-              setForm((oldForm) => ({ ...oldForm, name: e.target.value }))
-            }
-          />
-          <ScribbleInput
-            label="Point Value"
-            type="number"
-            value={form.value}
-            onChange={(e) =>
-              setForm((oldForm) => ({ ...oldForm, value: e.target.value }))
-            }
-          />
-          <ScribbleButton onClick={handleSubmit} className="mt-4 w-full">
-            Save
-          </ScribbleButton>
-        </Dialog>
+      <div className="absolute left-0 top-0 flex h-full w-full flex-grow flex-col gap-4 overflow-scroll overflow-x-hidden p-4">
         {query.data.map((item) => (
           <ScribbleButton
             key={item.id}
@@ -151,6 +126,7 @@ export function Chores() {
         >
           Add New Chore
         </ScribbleButton>
+        <div className="my-4" />
       </div>
     </>
   );

@@ -34,6 +34,7 @@ export function History() {
               </div>
             </div>
           ))}
+          <div className="my-4" />
         </div>
       </div>
     </div>
