@@ -6,6 +6,7 @@ import { History } from "./history";
 import { Leaderboard } from "./leaderboard";
 import Link from "next/link";
 import { ScribbleButton } from "~/components/scribble-button";
+import Confetti from "~/components/confetti";
 
 interface AppProps {
   session: Session;
@@ -44,6 +45,7 @@ export default function App({}: AppProps) {
       {page === "points" && <Points />}
       {page === "history" && <History />}
       {page === "leaderboard" && <Leaderboard />}
+      <Confetti />
     </main>
   );
 }

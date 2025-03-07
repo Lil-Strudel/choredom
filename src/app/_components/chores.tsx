@@ -30,6 +30,9 @@ export function Chores() {
   });
 
   const createTask = api.task.create.useMutation({
+    onMutate: () => {
+      window.dispatchEvent(new Event("shootConfetti"));
+    },
     onSuccess: async () => {
       await utils.task.invalidate();
     },
