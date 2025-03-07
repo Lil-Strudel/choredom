@@ -4,8 +4,8 @@ import { useState } from "react";
 import { Points } from "./points";
 import { History } from "./history";
 import { Leaderboard } from "./leaderboard";
-import { Chores } from "./chores";
 import Link from "next/link";
+import { ScribbleButton } from "~/components/scribble-button";
 
 interface AppProps {
   session: Session;
@@ -16,35 +16,29 @@ export default function App({}: AppProps) {
   );
 
   return (
-    <main className="mx-auto flex h-full w-full max-w-2xl flex-col items-center">
-      <div className="flex gap-2">
-        <button onClick={() => setPage("points")}>My Points</button>
-        <button onClick={() => setPage("history")}>History</button>
-        <button onClick={() => setPage("leaderboard")}>Leaderboard</button>
-        <Link href="/api/auth/signout">Signout</Link>
+    <main className="mx-auto flex h-full w-full max-w-2xl flex-col items-center gap-4 p-4">
+      <div className="flex gap-4">
+        <ScribbleButton onClick={() => setPage("points")}>
+          My Points
+        </ScribbleButton>
+        <ScribbleButton onClick={() => setPage("history")}>
+          History
+        </ScribbleButton>
+        <ScribbleButton onClick={() => setPage("leaderboard")}>
+          Leaderboard
+        </ScribbleButton>
+        <Link href="/api/auth/signout">
+          <ScribbleButton>Signout</ScribbleButton>
+        </Link>
       </div>
-      <span className="text-4xl">Welcome to</span>
+      <span className="text-3xl">Welcome to</span>
       <span className="text-8xl">Choredom!</span>
 
-      {page === "points" && (
-        <div>
-          <Points />
-        </div>
-      )}
+      {page === "points" && <Points />}
 
-      {page === "history" && (
-        <div>
-          <History />
-        </div>
-      )}
+      {page === "history" && <History />}
 
-      {page === "leaderboard" && (
-        <div>
-          <Leaderboard />
-        </div>
-      )}
-
-      <Chores />
+      {page === "leaderboard" && <Leaderboard />}
     </main>
   );
 }

@@ -34,26 +34,7 @@ export function Chores() {
   }
 
   return (
-    <div>
-      <input
-        value={name}
-        onChange={(e) => {
-          setName(e.target.value);
-        }}
-      />
-      <input
-        value={pointValue}
-        onChange={(e) => {
-          setPointValue(e.target.value);
-        }}
-      />
-      <button
-        onClick={() => {
-          createChore.mutate({ name, pointValue: Number(pointValue) });
-        }}
-      >
-        Add Chore
-      </button>
+    <div className="flex w-full max-w-md flex-col gap-4">
       {query.data.map((item) => (
         <ScribbleButton
           key={item.id}
@@ -61,10 +42,14 @@ export function Chores() {
             createTask.mutate(item);
           }}
         >
-          {item.name}
-          {item.pointValue}
+          <div className="relative mx-4 flex justify-center">
+            <div className="absolute right-0">+{item.pointValue}</div>
+            {item.name}
+          </div>
         </ScribbleButton>
       ))}
+      <ScribbleButton>One Time Chore</ScribbleButton>
+      <ScribbleButton>Add New Chore</ScribbleButton>
     </div>
   );
 }
