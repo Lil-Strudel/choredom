@@ -14,7 +14,7 @@ function getMonthBounds(month: number, year: number) {
   const timeZone = "America/Denver";
 
   const start = new TZDate(year, month, 1, timeZone);
-  const end = new TZDate(year, month + 1, 0, timeZone);
+  const end = new TZDate(year, month + 1, 0, 23, 59, 59, 999, timeZone);
 
   return {
     start: start,
