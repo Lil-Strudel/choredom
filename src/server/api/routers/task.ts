@@ -33,8 +33,6 @@ export const taskRouter = createTRPCRouter({
     .query(async ({ ctx, input }) => {
       const { start, end } = getMonthBounds(input.month, input.year);
 
-      console.log(start, end);
-
       const myTasks = await ctx.db
         .select()
         .from(tasks)
