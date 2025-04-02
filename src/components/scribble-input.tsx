@@ -16,15 +16,13 @@ export const ScribbleInput = ({ label, ...props }: ScribbleInputProps) => {
   return (
     <div className="relative">
       {label && (
-        <label className="mb-1 block text-sm font-medium text-gray-700">
-          {label}
-        </label>
+        <label className="mb-1 block text-sm font-medium">{label}</label>
       )}
       <motion.input
         suppressHydrationWarning
         {...props}
         className={twMerge(
-          "w-full border-[3px] border-[#41403E] bg-white p-2 outline-none [border-bottom-left-radius:15px_255px] [border-bottom-right-radius:225px_15px] [border-top-left-radius:255px_15px] [border-top-right-radius:15px_225px]",
+          "w-full border-[3px] border-[#4f3c33] bg-white p-2 outline-none [border-bottom-left-radius:15px_255px] [border-bottom-right-radius:225px_15px] [border-top-left-radius:255px_15px] [border-top-right-radius:15px_225px]",
           props.className,
         )}
         initial={{

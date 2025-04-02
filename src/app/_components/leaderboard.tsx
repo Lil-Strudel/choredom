@@ -1,31 +1,35 @@
 "use client";
+import { MonthSelector } from "~/components/month-selector";
+import { useMonthContext } from "~/components/month-selector-context";
 import { api } from "~/trpc/react";
 
 export function Leaderboard() {
-  const query = api.task.getAllMonthly.useQuery();
+  const { month, year } = useMonthContext();
+  const query = api.task.getAllMonthly.useQuery({
+    month,
+    year,
+  });
 
-  if (query.isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (query.isError || !query.isSuccess) {
+  if (query.isError) {
     return <div>Error...</div>;
   }
 
-  type user = NonNullable<(typeof query.data)[0]["user"]>;
-  type task = (typeof query.data)[0]["task"];
-  const grouped = query.data.reduce<
-    Record<string, { user: user; tasks: task[] }>
-  >((acc, cur) => {
-    if (!cur.user) return acc;
+  type user = NonNullable<NonNullable<typeof query.data>[number]["user"]>;
+  type task = NonNullable<typeof query.data>[number]["task"];
+  const grouped =
+    query.data?.reduce<Record<string, { user: user; tasks: task[] }>>(
+      (acc, cur) => {
+        if (!cur.user) return acc;
 
-    const userId = cur.user.id;
-    if (!acc[userId]) {
-      acc[userId] = { user: cur.user, tasks: [] };
-    }
-    acc[userId].tasks.push(cur.task);
-    return acc;
-  }, {});
+        const userId = cur.user.id;
+        if (!acc[userId]) {
+          acc[userId] = { user: cur.user, tasks: [] };
+        }
+        acc[userId].tasks.push(cur.task);
+        return acc;
+      },
+      {},
+    ) ?? {};
 
   const people = Object.values(grouped)
     .map((item) => ({
@@ -51,7 +55,8 @@ export function Leaderboard() {
 
   return (
     <div className="w-full max-w-xs">
-      <div className="flex flex-col gap-4">
+      <MonthSelector />
+      <div className="mt-4 flex flex-col gap-4">
         {people.map((item, idx) => (
           <div
             key={item.user.id}

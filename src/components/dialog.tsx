@@ -39,7 +39,7 @@ const Dialog: React.FC<DialogProps> = ({
         >
           <button
             onClick={onClose}
-            className="absolute right-4 top-4 text-gray-400 hover:text-gray-500"
+            className="absolute right-4 top-4"
             type="button"
             aria-label="Close dialog"
           >

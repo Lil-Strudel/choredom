@@ -40,7 +40,6 @@ export default function App({}: AppProps) {
       </div>
       <span className="text-2xl sm:text-3xl">Welcome to</span>
       <span className="text-6xl/3 sm:text-8xl">Choredom!</span>
-      <div className="mt-2" />
 
       {page === "points" && <Points />}
       {page === "history" && <History />}
