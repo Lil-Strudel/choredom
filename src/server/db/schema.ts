@@ -7,6 +7,7 @@ import {
   text,
   timestamp,
   varchar,
+  boolean,
 } from "drizzle-orm/pg-core";
 import { type AdapterAccount } from "next-auth/adapters";
 
@@ -34,6 +35,19 @@ export const tasks = createTable("task", {
     .default(sql`CURRENT_TIMESTAMP`)
     .notNull(),
   pointValue: integer("point_value").notNull(),
+});
+
+export const todos = createTable("todo", {
+  id: integer("id").primaryKey().generatedByDefaultAsIdentity(),
+  name: varchar("name", { length: 256 }).notNull(),
+  createdById: varchar("created_by", { length: 255 })
+    .notNull()
+    .references(() => users.id),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .default(sql`CURRENT_TIMESTAMP`)
+    .notNull(),
+  pointValue: integer("point_value").notNull(),
+  completed: boolean("completed").notNull().default(false),
 });
 
 export const users = createTable("user", {
