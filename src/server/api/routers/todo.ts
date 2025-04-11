@@ -1,4 +1,4 @@
-import { and, eq, asc } from "drizzle-orm";
+import { and, eq, desc } from "drizzle-orm";
 import { z } from "zod";
 
 import { createTRPCRouter, protectedProcedure } from "~/server/api/trpc";
@@ -9,7 +9,7 @@ export const todoRouter = createTRPCRouter({
     const myTodos = await ctx.db
       .select()
       .from(todos)
-      .orderBy(asc(todos.pointValue))
+      .orderBy(desc(todos.pointValue))
       .where(
         and(
           eq(todos.createdById, ctx.session.user.id),
