@@ -98,7 +98,10 @@ export function Snowball() {
                 }}
               >
                 <div className="relative mx-4 flex justify-center">
-                  <div className="absolute right-0">+{item.pointValue}</div>
+                  <div className="absolute right-0">
+                    {item.pointValue > 0 ? "+" : ""}
+                    {item.pointValue}
+                  </div>
                   {item.name}
                 </div>
               </ScribbleButton>

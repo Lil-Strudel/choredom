@@ -33,7 +33,10 @@ export function History() {
               </div>
               <div className="flex w-full justify-between">
                 <span>{item.task.name}</span>
-                <span>+{item.task.pointValue}</span>
+                <span>
+                  {item.task.pointValue > 0 ? "+" : ""}
+                  {item.task.pointValue}
+                </span>
               </div>
             </div>
           ))}
